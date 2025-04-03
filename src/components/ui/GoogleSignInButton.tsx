@@ -14,7 +14,12 @@ export default function GoogleSignInButton({
 
   const handleGoogleSignIn = async () => {
     setLoading(true);
-    await supabase.auth.signInWithOAuth({ provider: "google" });
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "http://localhost:3000/api/auth/callback", // ✅ Supabase will redirect here after login
+      },
+    });
     setLoading(false);
   };
 

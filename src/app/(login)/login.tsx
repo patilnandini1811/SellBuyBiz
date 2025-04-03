@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { signInWithMagicLink } from "./actions";
+import { createClient } from "@/supabase/client"; 
 
 export function Login({ mode = "signin" }: { mode?: "signin" | "signup" }) {
   const [email, setEmail] = useState("");
@@ -11,22 +11,28 @@ export function Login({ mode = "signin" }: { mode?: "signin" | "signup" }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const supabase = createClient(); 
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const formData = new FormData();
-    formData.append("email", email);
-    const result = await signInWithMagicLink(formData);
-    setLoading(false);
+    setError("");
 
-    if (result.success) {
-      setSuccess(true);
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: "http://localhost:3000/api/auth/callback", 
+      },
+    });
+
+    if (error) {
+      setError(error.message);
     } else {
-      setError(result.error || "Something went wrong");
+      setSuccess(true);
     }
+    setLoading(false);
   };
 
   return (

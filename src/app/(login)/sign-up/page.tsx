@@ -8,16 +8,29 @@ import GoogleSignInButton from "@/components/ui/GoogleSignInButton";
 
 export default function SignUpPage() {
   const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState<string | null>(null); 
+const [success, setSuccess] = useState(false);           
   const supabase = createClient();
 
   const handleMagicLink = async () => {
     setLoading(true);
-    const { error } = await supabase.auth.signInWithOtp({ email });
-    if (error) alert(error.message);
-    else alert("Magic link sent!");
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: "http://localhost:3000/api/auth/callback",
+      },
+    });
+    
+  
+    if (error) {
+      setError(error.message);
+    } else {
+      setSuccess(true);
+    }
     setLoading(false);
   };
+  
 
   const handleGoogleSignIn = async () => {
     setLoading(true);
