@@ -18,11 +18,12 @@
         "name": "next"
       }
     ],
-    "baseUrl": "src",
-    "paths": {
-     "@/*": ["./*"]
-    }
+   "baseUrl": "src",
+"paths": {
+  "@/*": ["./*"]
+}
+
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/types/app/auth/welcome/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/types/app/auth/welcome/page.tsx", "src/components/ui/CompanyList.tsx "],
   "exclude": ["node_modules"]
 }
