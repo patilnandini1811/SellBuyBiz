@@ -6,7 +6,8 @@
     "price": 350000,
     "industry": "Food and Drink",
     "image": "/images/food.jpg",
-    "seller": "Ananya Joshi"
+    "seller": "Ananya Joshi",
+    "email":"test@test.se"
   },
   {
     "id": 2,
@@ -15,7 +16,8 @@
     "price": 620000,
     "industry": "HR and Hiring",
     "image": "/images/hr.jpg",
-    "seller": "Lars Eriksson"
+    "seller": "Lars Eriksson",
+    "email": "test@test.com"
   },
   {
     "id": 3,
@@ -24,33 +26,28 @@
     "price": 490000,
     "industry": "Home Services",
     "image": "/images/home_care.jpg",
-    "seller": "Maria Lind"
+    "seller": "Maria Lind",
+     "email": "test@test.com"
   },
+  
   {
     "id": 4,
-    "name": "Glow & Go",
-    "description": "Mobile salon and hair styling services across Malmö.",
-    "price": 270000,
-    "industry": "Hair and Beauty",
-    "image": "/images/Hair_style.jpg",
-    "seller": "Priya Desai"
-  },
-  {
-    "id": 5,
     "name": "CodeCraft Hub",
     "description": "Online marketplace for custom SaaS tools and tech agencies.",
     "price": 890000,
     "industry": "IT Services",
     "image": "/images/code.jpg",
-    "seller": "Oscar Blom"
+    "seller": "Oscar Blom",
+     "email": "test@test.com"
   },
   {
-    "id": 6,
+    "id": 5,
     "name": "EduNest Online",
     "description": "E-learning platform offering curated courses for children.",
     "price": 410000,
     "industry": "Education Online",
     "image": "/images/education.jpg",
-    "seller": "Elin Svensson"
+    "seller": "Elin Svensson",
+    "email": "test@test.com"
   }
 ]

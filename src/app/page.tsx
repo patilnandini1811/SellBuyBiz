@@ -7,7 +7,7 @@ export default function Home() {
         <p className="text-xl mb-8">Buy, Sell, and Grow Your Business Here</p>
 
         <div className="flex flex-col sm:flex-row items-center gap-6">
-        <Link href="/sign-up" className="bg-white text-blue-500 px-6 py-3 rounded-semi text-lg font-semibold transition duration-300 hover:bg-blue-500 hover:text-white">
+        <Link href="/sign-up" className="bg-white text-blue-500 px-6 py-3 rounded-md text-lg font-semibold transition duration-300 hover:bg-blue-500 hover:text-white">
               Explore Listings
             
           </Link>
