@@ -5,7 +5,7 @@ import companiesData from "../../app/companies/companyList.json";
 import { useEffect, useState } from "react";
 import { createClient } from "@/supabase/client";
 import LogoutButton from "@/components/logout/page";
-import InterestedBuyersPage from "./interests/page";
+
 
 type Company = {
   id?: string | number;
@@ -23,7 +23,7 @@ type Company = {
 
 export default function CompaniesPage() {
   const [allCompanies, setAllCompanies] = useState<Company[]>([]);
-  const [loading, setLoading] = useState(true);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedIndustry, setSelectedIndustry] = useState("");
   const supabase = createClient();
@@ -41,7 +41,7 @@ export default function CompaniesPage() {
         setAllCompanies(combined);
       }
 
-      setLoading(false);
+    
     };
 
     fetchCompanies();
@@ -122,39 +122,22 @@ export default function CompaniesPage() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5 text-blue-600">
         {filteredCompanies.map((company: Company) => {
   const isFromSupabase = typeof company.id === "string" && company.id.length === 36;
+  const sellerEmail = company.seller_email || company.email; // ✅ Use like this
 
   return (
-    <div key={company.id} className="bg-white shadow-md rounded-lg p-4 transition-transform hover:scale-105">
-      <img
-        src={company.image || company.image_url}
-        alt={company.name}
-        className="w-full h-48 object-cover rounded-md mb-4"
-      />
-      <h2 className="text-xl font-semibold">{company.name}</h2>
-      <p className="text-sm text-gray-600">{company.description}</p>
-      <p className="text-sm text-gray-700 mt-1">Industry: {company.industry}</p>
-      <p className="text-sm mt-1 font-semibold text-blue-700">💰 Price: {company.price} SEK</p>
-      <p className="text-sm mt-1">📦 Seller: {company.seller || company.seller_name}</p>
-      <p className="text-sm mt-1">📧 Email: {company.email || company.seller_email}</p>
-
-      <div className="flex flex-col sm:flex-row items-center gap-6 mt-4">
-        <button
-          disabled={!isFromSupabase}
-          onClick={() =>
-            isFromSupabase && handleInterest(company.id!, company.seller_email || company.email)
-          }
-          className={`px-4 py-2 rounded-md font-semibold border ${
-            isFromSupabase
-              ? "bg-white text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white"
-              : "bg-gray-300 text-gray-500 border-gray-400 cursor-not-allowed"
-          }`}
-        >
-          Interested
-        </button>
-      </div>
+    <div key={company.id} className="...">
+      {/* ... other content ... */}
+      <button
+        disabled={!isFromSupabase}
+        onClick={() => isFromSupabase && handleInterest(company.id!, sellerEmail)}
+        className={`...`}
+      >
+        Interested
+      </button>
     </div>
   );
 })}
+
 
         </div>
 
