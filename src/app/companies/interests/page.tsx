@@ -32,7 +32,7 @@ export default function InterestedBuyersPage() {
 
       const userId = session.user.id;
 
-      // 1. Get all companies created by this seller
+    
       const { data: sellerCompanies, error: companyError } = await supabase
         .from("companies")
         .select("*")
@@ -45,7 +45,7 @@ export default function InterestedBuyersPage() {
 
       const companyIds = sellerCompanies.map((c) => c.id);
 
-      // 2. Get interests for those companies
+    
       const { data: interestData, error: interestError } = await supabase
         .from("interests")
         .select("*")
