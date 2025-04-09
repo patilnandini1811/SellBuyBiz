@@ -16,11 +16,7 @@ type Company = {
   user_id?: string;
 };
 
-type RegistrationFormPageProps = {
-  addCompany?: (newCompany: Company) => void;
-};
-
-export default function RegistrationFormPage({ addCompany }: RegistrationFormPageProps) {
+export default function RegistrationFormPage() {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -37,7 +33,6 @@ export default function RegistrationFormPage({ addCompany }: RegistrationFormPag
 
   const supabase = createClient();
   const router = useRouter();
-
 
   useEffect(() => {
     const checkSession = async () => {
@@ -59,39 +54,39 @@ export default function RegistrationFormPage({ addCompany }: RegistrationFormPag
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-  
+
     const { data, error } = await supabase.auth.getSession();
     if (error || !data.session) {
       setError("Failed to retrieve session. Please try logging in again.");
       return;
     }
-  
+
     const session = data.session;
     let imageUrl = "";
-  
+
     if (imageFile) {
       const fileExt = imageFile.name.split(".").pop();
       const fileName = `${Date.now()}.${fileExt}`;
       const filePath = `${fileName}`;
-  
+
       const { error: uploadError } = await supabase
         .storage
-        .from("company-logos") 
+        .from("company-logos")
         .upload(filePath, imageFile);
-  
+
       if (uploadError) {
         setError("Image upload failed: " + uploadError.message);
         return;
       }
-  
+
       const { data: publicUrlData } = supabase
         .storage
         .from("company-logos")
         .getPublicUrl(filePath);
-  
+
       imageUrl = publicUrlData?.publicUrl || "";
     }
-  
+
     const { data: insertData, error: insertError } = await supabase
       .from("companies")
       .insert([
@@ -104,13 +99,10 @@ export default function RegistrationFormPage({ addCompany }: RegistrationFormPag
       ])
       .select("*")
       .single();
-  
+
     if (insertError) {
       setError(insertError.message);
     } else {
-      if (addCompany && insertData) {
-        addCompany(insertData);
-      }
       setSuccess(true);
       setFormData({
         name: "",
@@ -125,7 +117,6 @@ export default function RegistrationFormPage({ addCompany }: RegistrationFormPag
       setTimeout(() => router.push("/companies"), 1500);
     }
   };
-  
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4">
@@ -150,45 +141,45 @@ export default function RegistrationFormPage({ addCompany }: RegistrationFormPag
             <div key={name}>
               <label className="block font-medium text-purple-800 mb-1">{label}</label>
               {type === "textarea" ? (
-  <textarea
-    name={name}
-    placeholder={placeholder}
-    value={formData[name as keyof typeof formData]}
-    onChange={handleChange}
-    required
-    className="w-full p-3 border border-gray-300 rounded placeholder-black"
-  />
-) : name === "image_url" ? (
-  <>
-    <input
-      type="file"
-      accept="image/*"
-      onChange={(e) => {
-        const file = e.target.files?.[0];
-        if (file) setImageFile(file);
-      }}
-      required
-      className="w-full p-3 border border-gray-300 rounded placeholder-black"
-    />
-    {imageFile && (
-      <img
-        src={URL.createObjectURL(imageFile)}
-        alt="Preview"
-        className="h-32 w-auto mt-2 rounded shadow"
-      />
-    )}
-  </>
-) : (
-  <input
-    type={type}
-    name={name}
-    placeholder={placeholder}
-    value={formData[name as keyof typeof formData]}
-    onChange={handleChange}
-    required={name !== "image_url"}
-    className="w-full p-3 border border-gray-300 rounded placeholder-black"
-  />
-)}
+                <textarea
+                  name={name}
+                  placeholder={placeholder}
+                  value={formData[name as keyof typeof formData]}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-3 border border-gray-300 rounded placeholder-black"
+                />
+              ) : name === "image_url" ? (
+                <>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) setImageFile(file);
+                    }}
+                    required
+                    className="w-full p-3 border border-gray-300 rounded placeholder-black"
+                  />
+                  {imageFile && (
+                    <img
+                      src={URL.createObjectURL(imageFile)}
+                      alt="Preview"
+                      className="h-32 w-auto mt-2 rounded shadow"
+                    />
+                  )}
+                </>
+              ) : (
+                <input
+                  type={type}
+                  name={name}
+                  placeholder={placeholder}
+                  value={formData[name as keyof typeof formData]}
+                  onChange={handleChange}
+                  required={name !== "image_url"}
+                  className="w-full p-3 border border-gray-300 rounded placeholder-black"
+                />
+              )}
             </div>
           ))}
 
