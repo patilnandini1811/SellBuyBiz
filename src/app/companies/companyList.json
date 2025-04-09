@@ -1,18 +1,6 @@
 [
  
-  {
-    "id": 1,
-    "name": "HireWise AB",
-    "description": "AI-powered recruitment solutions for SMEs.",
-    "price": 620000,
-    "industry": "HR and Hiring",
-    "image": "/images/hr.jpg",
-    "seller": "Lars Eriksson",
-    "email": "test@test.com"
-  },
   
-  
- 
   {
     "id": 2,
     "name": "EduNest Online",
