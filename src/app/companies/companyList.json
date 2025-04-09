@@ -1,16 +1,7 @@
 [
+ 
   {
     "id": 1,
-    "name": "Saffron Bites",
-    "description": "Premium Indian catering services across Stockholm.",
-    "price": 350000,
-    "industry": "Food and Drink",
-    "image": "/images/food.jpg",
-    "seller": "Ananya Joshi",
-    "email":"test@test.se"
-  },
-  {
-    "id": 2,
     "name": "HireWise AB",
     "description": "AI-powered recruitment solutions for SMEs.",
     "price": 620000,
@@ -19,29 +10,11 @@
     "seller": "Lars Eriksson",
     "email": "test@test.com"
   },
-  {
-    "id": 3,
-    "name": "HomeFix Hub",
-    "description": "On-demand home repair and maintenance service platform.",
-    "price": 490000,
-    "industry": "Home Services",
-    "image": "/images/home_care.jpg",
-    "seller": "Maria Lind",
-     "email": "test@test.com"
-  },
   
+  
+ 
   {
-    "id": 4,
-    "name": "CodeCraft Hub",
-    "description": "Online marketplace for custom SaaS tools and tech agencies.",
-    "price": 890000,
-    "industry": "IT Services",
-    "image": "/images/code.jpg",
-    "seller": "Oscar Blom",
-     "email": "test@test.com"
-  },
-  {
-    "id": 5,
+    "id": 2,
     "name": "EduNest Online",
     "description": "E-learning platform offering curated courses for children.",
     "price": 410000,

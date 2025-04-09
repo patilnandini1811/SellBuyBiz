@@ -76,7 +76,7 @@ export default function RegistrationFormPage({ addCompany }: RegistrationFormPag
   
       const { error: uploadError } = await supabase
         .storage
-        .from("company-logos") // 🔔 Make sure this bucket exists
+        .from("company-logos") 
         .upload(filePath, imageFile);
   
       if (uploadError) {

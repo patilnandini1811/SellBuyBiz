@@ -137,7 +137,6 @@ export default function SignUpPage() {
             <p className="text-green-600 text-center mt-4">✅ Account created! You can now sign in.</p>
           )}
           {error && <p className="text-red-600 text-center mt-4">{error}</p>}
-
           <p className="text-sm text-center mt-6 text-gray-500">
             Already have an account?{" "}
             <Link href="/sign-in" className="text-blue-600 hover:underline">

@@ -13,7 +13,7 @@ export default function LogoutButton() {
     if (error) {
       console.error("Logout failed:", error.message);
     } else {
-      router.push("/"); // or "/"
+      router.push("/"); 
     }
   };
 

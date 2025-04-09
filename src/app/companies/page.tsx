@@ -96,26 +96,28 @@ export default function CompaniesPage() {
         </div>
 
         {/* Search + Filter */}
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
-          <input
-            type="text"
-            placeholder="Search by name or description"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full md:w-1/3 px-2 py-1 rounded border border-white placeholder-white
- text-white bg-transparent text-sm"
-          />
-          <select
-            value={selectedIndustry}
-            onChange={(e) => setSelectedIndustry(e.target.value)}
-            className="w-full md:w-1/4 px-2 py-1 rounded border border-white text-white bg-transparent text-sm"
-          >
-            <option value="">All Industries</option>
-            {[...new Set(allCompanies.map(c => c.industry))].map((industry) => (
-              <option key={industry} value={industry}>{industry}</option>
-            ))}
-          </select>
-        </div>
+        <div className="flex flex-col md:flex-row gap-3 mb-6">
+  <input
+    type="text"
+    placeholder="Search by name or description"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    className="w-full md:w-1/2 px-3 py-1.5 rounded-md border border-gray-300 bg-white text-blue-600 placeholder-blue-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+  />
+  <select
+    value={selectedIndustry}
+    onChange={(e) => setSelectedIndustry(e.target.value)}
+    className="w-full md:w-1/4 px-3 py-1.5 rounded-md border border-gray-300 bg-white text-blue-600 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+  >
+    <option value="">All Industries</option>
+    {[...new Set(allCompanies.map(c => c.industry))].map((industry) => (
+      <option key={industry} value={industry}>
+        {industry}
+      </option>
+    ))}
+  </select>
+</div>
+
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5 text-blue-600">
         {filteredCompanies.map((company: Company) => {
