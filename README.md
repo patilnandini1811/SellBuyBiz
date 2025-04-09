@@ -4,8 +4,14 @@ A modern marketplace platform where users can explore and buy/sell businesses. B
 
 ---
 
-## 🔗 Live Demo
-👉 [View on Vercel]([https://your-deployed-url.vercel.app](https://marketplace-app-fhqj.vercel.app/))  
+## 🔐 Demo Login
+
+To explore full features like viewing buyer interest or posting a company, you can use the test credentials:
+
+**Email:** shankarmahadev699@gmail.com 
+**Password:** Mahakal@2025
+
+Or, feel free to register a new account via the Sign Up page.
 
 ---
 
