@@ -2,12 +2,22 @@
  
   
   {
+    "id": 1,
+    "name": "Your homecare",
+    "description": "Our team here to clean up your home.",
+    "price": 210000,
+    "industry": "Education Online",
+    "image": "/images/home_care.jpg",
+    "seller": "Nicklas Svensson",
+    "email": "test@test.com"
+  },
+  {
     "id": 2,
     "name": "EduNest Online",
     "description": "E-learning platform offering curated courses for children.",
     "price": 410000,
     "industry": "Education Online",
-    "image": "/images/education.jpg",
+    "image": "/images/onlineEdu.jpg",
     "seller": "Elin Svensson",
     "email": "test@test.com"
   }
