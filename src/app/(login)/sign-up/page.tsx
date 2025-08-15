@@ -5,7 +5,8 @@ import Link from "next/link";
 import { createClient } from "@/supabase/client";
 import companiesData from "@/app/companies/companyList.json";
 import { AuthApiError } from "@supabase/supabase-js";
-
+import { useRouter } from "next/navigation";
+import BackArrow from "@/components/backArrow";
 interface Company {
   id: string | number;
   name?: string;
@@ -96,7 +97,7 @@ export default function SignUpPage() {
 
   return (
     <main className="flex flex-col min-h-screen bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-    
+    <BackArrow />
 <section className="px-6 py-10 max-w-6xl mx-auto">
   <div className="bg-blue-50 p-6 rounded-xl shadow-md mb-10 max-w-3xl mx-auto text-center">
     <h1 className="text-3xl font-extrabold text-blue-900">Welcome to SellBuyBiz</h1>
